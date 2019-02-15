@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-bind:key="user in person">{{ user }}</div>
+    <div v-for="p in person">{{ p.name }}</div>
   </div>
 </template>
 
@@ -14,9 +14,11 @@ export default {
     }
   },
   created () {
+    var vm = this
     axios.get('http://localhost:8445/v1/test/ping')
       .then(function (response) {
         console.log(response)
+        vm.person = response.data
       })
       .catch(function (error) {
         console.log(error)

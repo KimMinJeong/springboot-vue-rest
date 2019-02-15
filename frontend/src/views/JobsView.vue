@@ -8,21 +8,17 @@
 import { fetchL1001List } from '../api/index.js'
 
 export default {
-  data () {
+  data() {
     return {
       person: []
     }
   },
-  created () {
+  created() {
+    // 화살표 함수 사용
     var vm = this
     fetchL1001List()
-      .then(function (response) {
-        console.log(response);
-        vm.person = response.data
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
+      .then(responseType => vm.person = responseType.data)
+      .catch(error => console.log(error))
   }
 }
 </script>

@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div v-for="p in person">{{ p.name }}</div>
+    <div v-for="p in person">{{ p.gender }}</div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import { fetchL1000List } from '../api/index.js'
 
 export default {
   data () {
@@ -15,7 +15,7 @@ export default {
   },
   created () {
     var vm = this
-    axios.get('http://localhost:8445/v1/test/ping')
+    fetchL1000List()
       .then(function (response) {
         console.log(response)
         vm.person = response.data

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-bind:key="user in users">{{ user }}</div>
+    <div v-bind:key="user in person">{{ user }}</div>
   </div>
 </template>
 
@@ -10,14 +10,13 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      users: []
+      person: []
     }
   },
   created () {
-    axios.get('https://api.hnpwa.com/v0/news/1.json')
+    axios.get('http://localhost:8445/v1/test/ping')
       .then(function (response) {
         console.log(response)
-        this.users = response.data
       })
       .catch(function (error) {
         console.log(error)

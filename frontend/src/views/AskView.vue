@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div v-for="p in itemAsk" :key="p.title">{{ p.title }}</div>
+    <div v-for="item in itemAsk" :key="item.title">
+      <a href="http://www.naver.com">{{ item.title }}</a>
+      <small>{{ item.time_ago }} by {{ item.user }}</small>
+    </div>
   </div>
 </template>
 

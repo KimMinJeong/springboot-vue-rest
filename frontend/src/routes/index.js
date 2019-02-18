@@ -33,7 +33,7 @@ export default new Router({
       component: UserView
     },
     {
-      path: '/item',
+      path: '/item/:id',
       component: ItemView
     }
   ]

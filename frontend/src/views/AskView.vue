@@ -1,30 +1,15 @@
 <template>
   <div>
-    <div v-for="p in person">{{ p.nickname }}</div>
+    <div v-for="p in this.$store.state.ask" :key="p.title">{{ p.title }}</div>
   </div>
 </template>
 
 <script>
-  import { fetchL1002List } from '../api/index.js'
-
-  export default {
-    data () {
-      return {
-        person: []
-      }
-    },
-    created () {
-      var vm = this
-      fetchL1002List()
-        .then(function (response) {
-          console.log(response);
-          vm.person = response.data
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
-    }
+export default {
+  created () {
+    this.$store.dispatch('FETCH_ASK')
   }
+}
 </script>
 
 <style>

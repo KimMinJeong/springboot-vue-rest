@@ -29,7 +29,7 @@ export default new Router({
       component: AskView
     },
     {
-      path: '/user',
+      path: '/user/:id',
       component: UserView
     },
     {

@@ -1,5 +1,5 @@
 // store/index.js actions 부분 모듈화
-import { fetchL1000List, fetchL1001List, fetchL1002List } from '../api/index.js'
+import { fetchL1000List, fetchL1001List, fetchL1002List, fetchUserInfo } from '../api/index.js'
 
 export default {
   FETCH_NEWS (context) {
@@ -28,6 +28,15 @@ export default {
       .then(({ data }) => {
         console.log(data)
         commit('SET_JOBS', data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  },
+  FETCH_USER ({ commit }, name) {
+    fetchUserInfo(name)
+      .then(({ data }) => {
+        commit('SET_USER', data)
       })
       .catch(error => {
         console.log(error)

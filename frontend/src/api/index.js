@@ -20,6 +20,10 @@ function fetchL1002List () {
   return axios.get(`${config.baseUrl}jobs/1.json`)
 }
 
+function fetchList (pageName) {
+  return axios.get(`${config.baseUrl}${pageName}/1.json`)
+}
+
 function fetchUserInfo (username) {
   return axios.get(`${config.baseUrl}user/${username}.json`)
 }
@@ -31,6 +35,7 @@ export {
   fetchL1000List,
   fetchL1001List,
   fetchL1002List,
+  fetchList,
   fetchUserInfo,
   fetchItemInfo
 }

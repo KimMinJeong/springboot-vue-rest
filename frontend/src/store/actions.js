@@ -1,5 +1,5 @@
 // store/index.js actions 부분 모듈화
-import { fetchL1000List, fetchL1001List, fetchL1002List, fetchUserInfo, fetchItemInfo } from '../api/index.js'
+import { fetchL1000List, fetchL1001List, fetchL1002List, fetchUserInfo, fetchItemInfo, fetchList } from '../api/index.js'
 
 export default {
   FETCH_NEWS (context) {
@@ -47,6 +47,15 @@ export default {
     fetchItemInfo(item)
       .then(({ data }) => {
         commit('SET_ITEM', data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  },
+  FETCH_LIST ({ commit }, pageName) {
+    fetchList(pageName)
+      .then(({ data }) => {
+        commit('SET_LIST', data)
       })
       .catch(error => {
         console.log(error)

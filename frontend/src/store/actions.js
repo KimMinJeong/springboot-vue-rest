@@ -8,6 +8,7 @@ export default {
         console.log(response)
         // Actions에서 commit을 해서 mutation에 값을 넘길 수 있다.
         context.commit('SET_NEWS', response.data)
+        return response
       })
       .catch(error => {
         console.log(error)

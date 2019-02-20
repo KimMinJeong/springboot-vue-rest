@@ -6,13 +6,28 @@
 
 <script>
 import ListItem from '../components/ListItem.vue'
+import bus from '../utils/bus.js'
 
 export default {
   components: {
     ListItem
   },
   created () {
-    this.$store.dispatch('FETCH_NEWS')
+    // spinner emit
+    bus.$emit('start:spinner')
+
+    // 시간 줘서 보이게
+    setTimeout(() => {
+      this.$store.dispatch('FETCH_NEWS')
+        .then(() => {
+          console.log('fetched')
+          bus.$emit('end:spinner')
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+      bus.$emit('end:spinner')
+    }, 3000)
   }
 }
 </script>

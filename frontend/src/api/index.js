@@ -6,20 +6,6 @@ const config = {
 }
 
 // 2. API 함수들을
-// L1000
-function fetchL1000List () {
-  // return axios.get(config.baseUrl + 'L1000')
-  return axios.get(`${config.baseUrl}news/1.json`)
-}
-
-function fetchL1001List () {
-  return axios.get(`${config.baseUrl}ask/1.json`)
-}
-
-function fetchL1002List () {
-  return axios.get(`${config.baseUrl}jobs/1.json`)
-}
-
 function fetchList (pageName) {
   return axios.get(`${config.baseUrl}${pageName}/1.json`)
 }
@@ -32,9 +18,6 @@ function fetchItemInfo (item) {
   return axios.get(`${config.baseUrl}item/${item}.json`)
 }
 export {
-  fetchL1000List,
-  fetchL1001List,
-  fetchL1002List,
   fetchList,
   fetchUserInfo,
   fetchItemInfo

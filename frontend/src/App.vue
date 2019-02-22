@@ -1,54 +1,20 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <Toolbar></Toolbar>
-    <transition name="page">
-      <router-view></router-view>
-    </transition>
-    <spinner :loading="loadingStatus"></spinner>
-  </div>
+  <v-app>
+    <core-filter />
+
+    <core-toolbar />
+
+    <core-drawer />
+
+    <core-view />
+  </v-app>
 </template>
 
-<script>
-import Toolbar from './components/Toolbar'
-import Spinner from './components/Spinner'
-import bus from './utils/bus.js'
+<style lang="scss">
+@import '@/styles/index.scss';
 
-export default {
-  name: 'App',
-  components: {
-    Spinner,
-    Toolbar
-  },
-  data () {
-    return {
-      loadingStatus: false
-    }
-  },
-  methods: {
-    startSpinner () {
-      this.loadingStatus = true
-    },
-    endSpinner () {
-      this.loadingStatus = false
-    }
-  },
-  created () {
-    bus.$on('start:spinner', this.startSpinner)
-    bus.$on('end:spinner', this.endSpinner)
-  },
-  beforeDestroy () {
-    bus.$off('start:spinner', this.startSpinner)
-    bus.$off('end:spinner', this.endSpinner)
-  }
+/* Remove in 1.2 */
+.v-datatable thead th.column.sortable i {
+  vertical-align: unset;
 }
-</script>
-
-<style>
-  .page-enter-active, .page-leave-active {
-    transition: opacity .5s;
-  }
-  .page-enter, .page-leave-to /* .page-leave-active below version 2.1.8 */ {
-    opacity: 0;
-  }
 </style>
